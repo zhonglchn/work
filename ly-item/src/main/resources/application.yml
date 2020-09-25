@@ -1,0 +1,21 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: item-service
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql:///leyou?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: root
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10086/eureka
+mybatis:
+  type-aliases-package: com.leyou.item.entity
+  configuration:
+    map-underscore-to-camel-case: true
+logging:
+  lever:
+    com.leyou: debug
