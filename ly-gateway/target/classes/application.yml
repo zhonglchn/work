@@ -1,0 +1,52 @@
+server:
+  port: 10010
+spring:
+  application:
+    name: ly-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: item-service   # 路由id,可以随意写
+          # 代理的服务地址；lb表示负载均衡(从eureka中获取具体服务)
+          uri: lb://item-service
+          # 路由断言，可以配置映射路径
+          predicates:
+              - Path=/api/item/**
+          filters:
+              # 表示过滤1个路径，2表示两个路径，以此类推
+              - StripPrefix=2
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins:
+              - "http://manage.leyou.com"
+            allowedHeaders:
+              - "*"
+            allowCredentials: true
+            maxAge: 360000
+            allowedMethods:
+              - GET
+              - POST
+              - DELETE
+              - PUT
+              - OPTIONS
+              - HEAD
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10086/eureka
+    registry-fetch-interval-seconds: 5
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 6000 # 熔断超时时长：6000ms
+ribbon:
+  ConnectTimeout: 1000 # ribbon链接超时时长
+  ReadTimeout: 2000 # ribbon读取超时时长
+  MaxAutoRetries: 0  # 当前服务重试次数
+  MaxAutoRetriesNextServer: 1 # 切换服务重试次数
+  OkToRetryOnAllOperations: false # 是否对所有的请求方式都重试，只对get请求重试
+

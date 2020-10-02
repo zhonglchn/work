@@ -52,4 +52,16 @@ public class BrandService {
         new PageResult<>(pageInfo.getTotal(), pageInfo.getPages(), brands);
         return new PageResult<>(pageInfo.getTotal(), pageInfo.getPages(), brands);
     }
+
+    public void saveBrand(Brand brand, List<Long> cids) {
+        try {
+            //保存品牌数据
+            brandMapper.insertSelective(brand);
+            //保存中间表
+            brandMapper.insertCategoryAndBrand(cids, brand.getId());
+        }catch (Exception e){
+            throw new LyException(ExceptionEnum.INSERT_OPERATION_FAIL);
+        }
+
+    }
 }
