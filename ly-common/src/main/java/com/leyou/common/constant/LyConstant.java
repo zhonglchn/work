@@ -9,4 +9,8 @@ public class LyConstant {
      * 品牌logo图片访问的url地址
      */
     public static final String BRAND_IMG_URL = "http://localhost/brand-logo/";
+    /**
+     * 在common模块的常量类中提供一个手机验证码存放的key的前缀
+     */
+    public static final String CHECK_CODE_PRE = "CHECK_CODE_PRE";
 }
