@@ -1,0 +1,20 @@
+server:
+  port: 8084
+spring:
+  application:
+    name: page-service
+  thymeleaf:
+    cache: false
+  rabbitmq:
+    host: 127.0.0.1
+    virtual-host: /leyou124
+    username: leyou124
+    password: 123456
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+ly:
+  static:
+    itemDir: E:\Projects\leyou_work_develop\nginx-1.16.0\html\item
+    itemTemplate: item

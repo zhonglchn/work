@@ -8,6 +8,18 @@ spring:
     url: jdbc:mysql:///leyou?useUnicode=true&characterEncoding=UTF-8
     username: root
     password: root
+  rabbitmq:
+    host: 127.0.0.1
+    username: leyou124
+    password: 123456
+    virtual-host: /leyou124
+    template:
+      retry:  #重试策略
+        enabled: true  #如果发送失败，重新发送策略开启
+        initial-interval: 10000ms    #第一次重试间隔时间
+        max-interval: 80000ms    #最后一次重试间隔时间
+        multiplier: 2   #每次重试间隔时间的倍数
+      publisher-confirms: true    #开启消息的ACK回执确认，如果消费者方抛出一次，则认为没有消息确认
 eureka:
   client:
     service-url:
@@ -20,3 +32,5 @@ mybatis:
 logging:
   lever:
     com.leyou: debug
+mapper:
+  wrap-keyword: "`{0}`"
