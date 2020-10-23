@@ -1,0 +1,31 @@
+server:
+  port: 8085
+spring:
+  application:
+    name: user-service
+  datasource:
+    name: root
+    password: root
+    url: jdbc:mysql://127.0.0.1:3306/leyou?useUnicode=true&characterEncoding=UTF-8
+    driver-class-name: com.mysql.jdbc.Driver
+  rabbitmq:
+    virtual-host: /leyou124
+    username: leyou124
+    password: 123456
+    host: 127.0.0.1
+  redis:
+    host: 127.0.0.1
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+  instance:
+    ip-address: 127.0.0.1
+    prefer-ip-address: true
+mybatis:
+  type-aliases-package: com.leyou.user.entity
+  configuration:
+    map-underscore-to-camel-case: true
+logging:
+  level:
+    com.leyou: debug
