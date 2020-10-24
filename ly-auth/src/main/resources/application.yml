@@ -3,6 +3,8 @@ server:
 spring:
   application:
     name: auth-service
+  redis:
+    host: 127.0.0.1
 eureka:
   client:
     service-url:
@@ -10,3 +12,12 @@ eureka:
   instance:
     ip-address: 127.0.0.1
     prefer-ip-address: true
+ly:
+  jwt:
+    pubKeyPath: E:\Projects\leyou_work_develop\rsa\rsa_key.pub # 公钥地址
+    priKeyPath: E:\Projects\leyou_work_develop\rsa\rsa_key # 私钥地址
+    user:
+      expire: 30 #过期时间设置 单位分钟
+      cookieName: LY_TOKEN # cookie名称
+      refreshTime: 15 #刷新时间设置 单位分钟
+      cookieDomain: leyou.com # cookie的域，不要加www或者manage
