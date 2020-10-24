@@ -1,7 +1,6 @@
 package com.leyou.common.utils;
 
 import com.leyou.common.auth.pojo.Payload;
-import com.leyou.common.utils.JsonUtils;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
