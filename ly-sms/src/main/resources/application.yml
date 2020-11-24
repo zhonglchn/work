@@ -13,8 +13,8 @@ spring:
       charset: UTF-8
 ly:
   sms:
-    accessKeyID: LTAI4FmHRSUCDo5vytQ88666
-    accessKeySecret: YR0KMdg82jFSjX89mXTuIIDnl88265
+    accessKeyID: SUCDo5vytQ88666
+    accessKeySecret: YXTuIIDnl88265
     signName: 杀奶商城 # 签名名称
     verifyCodeTemplate: SMS_183762657 # 模板名称
     domain: dysmsapi.aliyuncs.com # 域名
