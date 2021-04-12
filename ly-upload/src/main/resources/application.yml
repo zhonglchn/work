@@ -15,8 +15,8 @@ eureka:
     prefer-ip-address: true
 ly:
   oss:
-    accessKeyId: LTAI4FmkumHRSUCDo5vyt888
-    accessKeySecret: aHCYR0KMdg82jFSjX89mXTuIIDnl878
+    accessKeyId: LTAI4HRSUCDo5vyt888
+    accessKeySecret: aHCYR0KMdg82XTuIIDnl878
     host: http://zhongl-work.oss-cn-beijing.aliyuncs.com #http://image.leyou.com # 访问oss的域名，很重要bucket + endpoint
     endpoint: oss-cn-beijing.aliyuncs.com # 你的服务的端点，不一定跟我一样
     dir: "" # 保存到bucket的某个子目录
