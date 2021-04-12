@@ -2,6 +2,7 @@ package com.leyou.sms.listener;
 
 import com.leyou.common.constant.MQConstants;
 import com.leyou.sms.utils.SmsHelper;
+import jdk.nashorn.internal.runtime.logging.Logger;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.amqp.core.AmqpTemplate;
@@ -11,9 +12,11 @@ import org.springframework.amqp.rabbit.annotation.Queue;
 import org.springframework.amqp.rabbit.annotation.QueueBinding;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
+import javax.annotation.Resource;
 import java.util.Map;
 
 /**
