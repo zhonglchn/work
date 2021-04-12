@@ -64,8 +64,6 @@ public class SpecService {
         List<SpecGroup> groups = findSpecGroupByCid(id);
         // 将规格组集合转成规格组dto集合
         List<SpecGroupDTO> groupDTOS = BeanHelper.copyWithCollection(groups, SpecGroupDTO.class);
-
-
         //方案三    马上升值加新版
         //流时编程法
         //根据分类id将所有规格参数集合查询出来，然后在分别放入到规格组中去
