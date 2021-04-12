@@ -7,9 +7,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-/**
- * @author 黑马程序员
- */
 @Slf4j
 public class BeanHelper {
 

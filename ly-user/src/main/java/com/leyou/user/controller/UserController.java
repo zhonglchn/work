@@ -58,4 +58,14 @@ public class UserController {
         userService.userRegister(user,code);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
+
+    /**
+     * 根据用户名和密码查询用户
+     */
+    @GetMapping("/query")
+    public ResponseEntity<User> findUserByUsernameAndPassword(@RequestParam("username") String username,
+                                                              @RequestParam("password") String password){
+        User user = userService.findUserByUsernameAndPassword(username, password);
+        return ResponseEntity.ok(user);
+    }
 }

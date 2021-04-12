@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>ly-search-pojo</module>
+        <module>ly-user-pojo</module>
     </modules>
 
     <dependencies>
@@ -25,6 +26,10 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>2.9.9</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
         </dependency>
     </dependencies>
 </project>

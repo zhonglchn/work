@@ -7,17 +7,21 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="ly-upload" />
-        <module name="ly-item-client" />
-        <module name="ly-item" />
-        <module name="ly-search" />
-        <module name="ly-item-pojo" />
-        <module name="ly-search-pojo" />
-        <module name="ly-gateway" />
-        <module name="ly-sms" />
-        <module name="ly-page" />
-        <module name="ly-common" />
         <module name="ly-registry" />
+        <module name="ly-auth" />
+        <module name="ly-common" />
+        <module name="ly-page" />
+        <module name="ly-item" />
+        <module name="ly-user" />
+        <module name="ly-item-client" />
+        <module name="ly-user-client" />
+        <module name="ly-upload" />
+        <module name="ly-search" />
+        <module name="ly-gateway" />
+        <module name="ly-user-pojo" />
+        <module name="ly-search-pojo" />
+        <module name="ly-sms" />
+        <module name="ly-item-pojo" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -28,6 +32,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="demo" options="-parameters" />
       <module name="leyou_work" options="-parameters" />
+      <module name="ly-auth" options="-parameters" />
       <module name="ly-client" options="-parameters" />
       <module name="ly-common" options="-parameters" />
       <module name="ly-gateway" options="-parameters" />
@@ -41,6 +46,9 @@
       <module name="ly-search-pojo" options="-parameters" />
       <module name="ly-sms" options="-parameters" />
       <module name="ly-upload" options="-parameters" />
+      <module name="ly-user" options="-parameters" />
+      <module name="ly-user-client" options="-parameters" />
+      <module name="ly-user-pojo" options="-parameters" />
     </option>
   </component>
 </project>

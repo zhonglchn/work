@@ -9,6 +9,7 @@ import com.leyou.user.entity.User;
 import com.leyou.user.mapper.UserMapper;
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.bouncycastle.jcajce.provider.asymmetric.ec.KeyFactorySpi;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -107,5 +108,21 @@ public class UserService {
         if(count==0){
             throw new LyException(ExceptionEnum.INSERT_OPERATION_FAIL);
         }
+    }
+
+    public User findUserByUsernameAndPassword(String username, String password) {
+        // 根据用户查询
+        User record = new User();
+        record.setUsername(username);
+        User user = userMapper.selectOne(record);
+        if(user==null){
+            throw new LyException(ExceptionEnum.INVALID_USERNAME_PASSWORD);
+        }
+        // 比对密码
+//        String encode = encoder.encode(password);
+        if(!encoder.matches(password,user.getPassword())){
+            throw new LyException(ExceptionEnum.INVALID_USERNAME_PASSWORD);
+        }
+        return user;
     }
 }

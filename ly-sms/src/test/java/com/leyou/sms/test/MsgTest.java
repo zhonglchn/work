@@ -25,7 +25,7 @@ public class MsgTest {
     @Test
     public void sendMsg(){
         Map<String, String> msgMap = new HashMap<>();
-        msgMap.put("phone", "13755065155");
+        msgMap.put("phone", "15580882278");
         msgMap.put("code", "8888");
         amqpTemplate.convertAndSend(MQConstants.Exchange.SMS_EXCHANGE_NAME,
                 MQConstants.RoutingKey.VERIFY_CODE_KEY, msgMap);

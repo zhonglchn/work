@@ -46,7 +46,7 @@ public class SmsHelper {
         request.putQueryParameter(SmsConstants.SMS_PARAM_KEY_PHONE, phone);
         request.putQueryParameter(SmsConstants.SMS_PARAM_KEY_SIGN_NAME, prop.getSignName());
         request.putQueryParameter(SmsConstants.SMS_PARAM_KEY_TEMPLATE_CODE, prop.getVerifyCodeTemplate());
-        request.putQueryParameter(SmsConstants.SMS_PARAM_KEY_TEMPLATE_PARAM, "{\"checkcode\":\""+code+"\"}");
+        request.putQueryParameter(SmsConstants.SMS_PARAM_KEY_TEMPLATE_PARAM, "{\"code\":\""+code+"\"}");
         try {
             CommonResponse response = client.getCommonResponse(request);
             //将返回结果转成Json
