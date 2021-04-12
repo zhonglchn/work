@@ -5,6 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import tk.mybatis.spring.annotation.MapperScan;
 
+import java.io.File;
+
 /**
  * @author zhongliang
  * @date 2020/9/21 15:35
