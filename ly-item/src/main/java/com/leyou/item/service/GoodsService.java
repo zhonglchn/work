@@ -22,6 +22,7 @@ import tk.mybatis.mapper.entity.Example;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -225,5 +226,32 @@ public class GoodsService {
         //将SpuDetail的对象封装到SpuDTO中
         spuDTO.setSpuDetail(findSpuDetailBySpuId(id));
         return spuDTO;
+    }
+
+    public List<Sku> findSkusByIds(List<Long> ids) {
+        List<Sku> skus = skuMapper.selectByIdList(ids);
+        if(CollectionUtils.isEmpty(skus)){
+            throw new LyException(ExceptionEnum.GOODS_NOT_FOUND);
+        }
+        return skus;
+    }
+
+    public void minusStock(Map<Long, Integer> paramMap) {
+        // 遍历所有键值对 其实可以使用动态sql来优化效率，真实订单中的商品数量，不会太多，所以这里直接在业务层变量
+        paramMap.entrySet().forEach(entry->{
+          // 当前skuid
+          Long skuId = entry.getKey();
+          // 根据skuId查询sku对象
+            Sku sku = skuMapper.selectByPrimaryKey(skuId);
+
+            // 要减少的库存数量
+            Integer num = entry.getValue();
+            Sku record = new Sku();
+
+            record.setId(skuId);// 主键必须有值才能使用ByPrimaryKey
+            record.setStock(sku.getStock()-num);
+
+            skuMapper.updateByPrimaryKeySelective(record);
+        });
     }
 }

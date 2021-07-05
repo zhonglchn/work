@@ -39,6 +39,18 @@ spring:
             - Path=/api/auth/**
           filters:
             - StripPrefix=2
+        - id: cart-service
+          uri: lb://cart-service
+          predicates:
+            - Path=/api/cart/**
+          filters:
+            - StripPrefix=2
+        - id: order-service
+          uri: lb://order-service
+          predicates:
+            - Path=/api/order/**
+          filters:
+            - StripPrefix=1
       globalcors:
         cors-configurations:
           '[/**]':
@@ -76,15 +88,15 @@ ribbon:
   OkToRetryOnAllOperations: false # 是否对所有的请求方式都重试，只对get请求重试
 ly:
   jwt:
-    pubKeyPath: D:\ly_guangzhou124\rsa\rsa_key.pub # 公钥地址
+    pubKeyPath: E:\Projects\leyou_work_develop\rsa\rsa_key.pub # 公钥地址
     user:
       cookieName: LY_TOKEN # cookie名称
-    filter:
-      allowPaths:
-        - /api/auth/login
-        - /api/search
-        - /api/user/register
-        - /api/user/check
-        - /api/user/code
-        - /api/item
+  filter:
+    allowPaths:
+      - /api/auth/login
+      - /api/search
+      - /api/user/register
+      - /api/user/check
+      - /api/user/code
+      - /api/item
 

@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class GoodsController {
@@ -92,5 +93,23 @@ public class GoodsController {
     public ResponseEntity<SpuDTO> findSpuDtoById(@PathVariable("id") Long id){
         SpuDTO spuDTO = goodsService.findSpuDtoById(id);
         return ResponseEntity.ok(spuDTO);
+    }
+
+    /**
+     * 根据sku的id集合查询sku对象集合
+     */
+    @GetMapping("/sku/list")
+    public ResponseEntity<List<Sku>> findSkusByIds(@RequestParam("ids") List<Long> ids){
+        List<Sku> list = goodsService.findSkusByIds(ids);
+        return ResponseEntity.ok(list);
+    }
+
+    /**
+     * 减库存
+     */
+    @PutMapping("/stock/minus")
+    public ResponseEntity<Void> minusStock(@RequestBody Map<Long, Integer> paramMap){
+        goodsService.minusStock(paramMap);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }

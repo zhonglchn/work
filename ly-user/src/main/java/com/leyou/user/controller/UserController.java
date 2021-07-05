@@ -66,6 +66,7 @@ public class UserController {
      */
     @GetMapping("/query")
     public ResponseEntity<User> findUserByUsernameAndPassword(@RequestParam("username") String username,
+
                                                               @RequestParam("password") String password){
         User user = userService.findUserByUsernameAndPassword(username, password);
         return ResponseEntity.ok(user);

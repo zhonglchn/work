@@ -56,7 +56,7 @@ public class CommonTest {
      */
     @Test
     public void parseToken() throws Exception {
-        String jws = "eyJhbGciOiJSUzI1NiJ9.eyJqdGkiOiIxMSIsImV4cCI6MTYwMzU3MjAwMywicm9sZSI6ImFkbWluIn0.eK9TQ9qZ42arHW28PErJe2Bs3QJnopxLUaidX5zP8Zp2cKh_49FXigtJymP-y9APlPs8zn-mIL7sZx9Y0F8IaNwbYB-EtVYjFBXskV01H5WTTRAEiE03GJvFTe2TLeonTJtisdnLBMG2eOZz7i3Ahzhio65FzMbZ1SJOLjJ1uOAz8PX6nwFxLVtFFzidt3KOdakJ8dDAFmRexOX0Nwy-WGR0m_hEJVVZrgp6EvpffNCF_SHpe_efvQFX0rQv8xHzsl69YxGsBZSn34Y6hmcflfFLZ7ygKNq4WBR0vjXy4us2mH4lQTkOn37DC9PrtHl19gOWhX05RNciAYVDd6W0tg";
+        String jws = "eyJhbGciOiJSUzI1NiJ9.eyJ1c2VyIjoie1wiaWRcIjozMixcInVzZXJuYW1lXCI6XCJ6aG9uZ2xjaG5cIixcInJvbGVcIjpcImFkbWluXCJ9IiwianRpIjoiTUdGak9ETTFPV010TlRabE9DMDBPREptTFRnM05qUXRaRFppWmpRd1pqYzRPR1k1IiwiZXhwIjoxNjIxMTc5MDY4fQ.TLeebox6N7mV2DgqOz_kASCdH3TsedL8E1aWAjJfgypTax7D-juoNwaBMI4WIc6exhmY7Q5LJIPMLixAYJBg1MK60G3o64AjYw6ox_Zy29EA-cDxvERdwJcnjzliZ5E-Db19j1v7vux6iaTrRHbpJrjdk3IxtPHUDDh_Gs3_Kv0_za6Bi1pDK9uMG0xpSIne3hLFy5VyNahSdSc7Vj4GneG2n3WhhiOwfd6tnqupmlNGSMVoOsB4HUyt9-gBJEJRlZD80T79qTe44q8nVTsLd9QIInOC5pE5sGKLPrlKKRkN6xzNX2W-fvp5nVO5TYf-887pP1J9RVyGkfZBI1B7gA";
         PublicKey publicKey = RsaUtils.getPublicKey(publicPath);
         Claims claims = Jwts.parser().setSigningKey(publicKey).parseClaimsJws(jws).getBody();
         System.out.println(claims.getId());

@@ -5,11 +5,10 @@ import com.leyou.item.dto.SpecGroupDTO;
 import com.leyou.item.dto.SpuDTO;
 import com.leyou.item.entity.*;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author zhongliang
@@ -69,5 +68,17 @@ public interface ItemClient {
 
     @GetMapping("/spec/groupsdto/of/category")
     public List<SpecGroupDTO> findSpecGroupDtoByCid(@RequestParam("id") Long id);
+
+    /**
+     * 减库存
+     */
+    @PutMapping("/stock/minus")
+    public Void minusStock(@RequestBody Map<Long, Integer> paramMap);
+
+    /**
+     * 就是根据sku的id集合查询sku对象集合
+     */
+    @GetMapping("/sku/list")
+    public List<Sku> findSkusByIds(@RequestParam("ids") List<Long> ids);
 }
 

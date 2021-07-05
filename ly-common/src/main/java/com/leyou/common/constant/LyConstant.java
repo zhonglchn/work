@@ -13,4 +13,12 @@ public class LyConstant {
      * 在common模块的常量类中提供一个手机验证码存放的key的前缀
      */
     public static final String CHECK_CODE_PRE = "CHECK_CODE_PRE";
+    /**
+     * 认证通过后用户id传递的头名称
+     */
+    public static final String USER_ID_HEADER = "UserIdHeader";
+    /**
+     * 用户在redis中的购物车对象的key的前缀
+     */
+    public static final String CART_PRE = "CART_PRE";
 }

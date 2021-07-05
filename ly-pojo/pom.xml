@@ -14,6 +14,7 @@
     <modules>
         <module>ly-search-pojo</module>
         <module>ly-user-pojo</module>
+        <module>ly-order-pojo</module>
     </modules>
 
     <dependencies>

@@ -4,6 +4,7 @@ import com.leyou.com.leyou.gateway.config.FilterProperties;
 import com.leyou.com.leyou.gateway.config.JwtProperties;
 import com.leyou.common.auth.pojo.Payload;
 import com.leyou.common.auth.pojo.UserInfo;
+import com.leyou.common.constant.LyConstant;
 import com.leyou.common.utils.JwtUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,7 +61,7 @@ public class AuthFilter implements GlobalFilter, Ordered {
         }
 
         // 获取token
-        String token = cookie.getName();
+        String token = cookie.getValue();
 
         Payload<UserInfo> payload = null;
         try {
@@ -78,14 +79,19 @@ public class AuthFilter implements GlobalFilter, Ordered {
             System.out.println("方法类型：=====>" + method);
             // TODO 判断权限，此处暂时空置，等待权限服务完成后补充
             log.info("【网关】用户{},角色{}。访问服务{} : {}，", user.getUsername(), role, method, path);
+            // 说明：只要是非白名单请求，一定需要当前用户id，所以这里我们可以得到当前用户id，并放入请求头中传下去
+            // //获取用户id
+             Long userId = user.getId();
+            //给当前request请求添加请求头，并得到一个新的request对象
+            ServerHttpRequest newRequest = exchange.getRequest().mutate().header(LyConstant.USER_ID_HEADER, userId.toString()).build();
+            //修改exchange对象中的request对象，并得到一个新的exchange
+            ServerWebExchange newExchange = exchange.mutate().request(newRequest).build();
+            return chain.filter(newExchange);
         } catch (Exception e) {
             //当前用户没有登录，终止后续所有操作，其他过滤链包括要转发的微服务都不再访问,401没登录，403是没权限
             exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
             return exchange.getResponse().setComplete();
         }
-
-        //继续后续的操作
-        return chain.filter(exchange);
     }
 
     private boolean isAllowRequest(ServerHttpRequest request) {
